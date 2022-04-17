@@ -22,7 +22,7 @@ return new class extends Migration
             $table->decimal('price', 64, 2)->default(0);
             $table->decimal('price_sp', 64, 2)->default(0);
             $table->integer('amount')->default(0);
-            $table->json('properties');
+            $table->json('properties')->nullable();
             $table->string('joint_purchase')->nullable();
             $table->string('unit')->nullable();
             $table->string('picture')->nullable();
