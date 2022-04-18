@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('joint_purchase')->nullable();
             $table->string('unit')->nullable();
             $table->string('picture')->nullable();
-            $table->boolean('show_on_main_page')->default(false);
+            $table->text('short_description')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });
