@@ -40,10 +40,10 @@ class ImportCsv extends Command
                     } else {
                         Product::create([
                             'code' => array_key_exists(0, $data) ? $data[0] : '',
-                            'level1' => array_key_exists(1, $data) ? $data[1] : '',
-                            'level2' => array_key_exists(2, $data) ? $data[2] : '',
-                            'level3' => array_key_exists(3, $data) ? $data[3] : '',
-                            'name' => array_key_exists(4, $data) ? $data[4] : '',
+                            'name' => array_key_exists(1, $data) ? $data[1] : '',
+                            'level1' => array_key_exists(2, $data) ? $data[2] : '',
+                            'level2' => array_key_exists(3, $data) ? $data[3] : '',
+                            'level3' => array_key_exists(4, $data) ? $data[4] : '',
                             'price' => array_key_exists(5, $data) ? (float) $data[5] : '',
                             'price_sp' => array_key_exists(6, $data) ? (float) $data[6] : '',
                             'amount' => array_key_exists(7, $data) ? (int) $data[7] : '',
