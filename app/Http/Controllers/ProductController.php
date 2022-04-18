@@ -5,9 +5,31 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class ProductController extends Controller
 {
+    /**
+     * Upload file and import products.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function import(Request $request)
+    {
+        $request->file->move(storage_path('app'), 'products.csv');
+        try {
+            Artisan::call('import:csv');
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => $exception->getMessage(),
+            ], 500);
+        }
+        return response()->json([
+            'message' => 'Products import executed',
+        ], 200);
+    }
+
     /**
      * Display a listing of the resource.
      *

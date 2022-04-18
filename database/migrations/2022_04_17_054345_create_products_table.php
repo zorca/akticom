@@ -19,10 +19,11 @@ return new class extends Migration
             $table->string('level1')->nullable();
             $table->string('level2')->nullable();
             $table->string('level3')->nullable();
+            $table->string('name')->nullable();
             $table->decimal('price', 64, 2)->default(0);
             $table->decimal('price_sp', 64, 2)->default(0);
             $table->integer('amount')->default(0);
-            $table->json('properties')->nullable();
+            $table->string('properties')->nullable();
             $table->string('joint_purchase')->nullable();
             $table->string('unit')->nullable();
             $table->string('picture')->nullable();

@@ -14,6 +14,7 @@ class Product extends Model
         'level1',
         'level2',
         'level3',
+        'name',
         'price',
         'price_sp',
         'amount',
@@ -21,7 +22,7 @@ class Product extends Model
         'joint_purchase',
         'unit',
         'picture',
-        'show_on_main_page',
+        'short_description',
         'description'
     ];
 }
