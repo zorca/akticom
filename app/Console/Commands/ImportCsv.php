@@ -38,6 +38,9 @@ class ImportCsv extends Command
                     if ($productExists) {
                         Log::info('Product with code = ' . $data[0] . ' already exists, import not executed');
                     } else {
+                        $data = array_map(static function($item) {
+                            return trim($item, ' \'"');
+                        }, $data);
                         Product::create([
                             'code' => array_key_exists(0, $data) ? $data[0] : '',
                             'name' => array_key_exists(1, $data) ? $data[1] : '',

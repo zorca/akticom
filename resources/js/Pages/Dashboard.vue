@@ -15,8 +15,8 @@ import Welcome from '@/Jetstream/Welcome.vue';
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <div class="p-4">
-                        <div v-if="success !== ''" class="alert alert-success" role="alert">
-                            {{success}}
+                        <div v-if="success !== ''" role="alert" class="bg-green-500 text-white p-2 mb-4">
+                            {{ success }}
                         </div>
                         <form @submit="formSubmit" enctype="multipart/form-data">
                             <span class="pr-2">Файл для импорта:</span>
@@ -35,7 +35,7 @@ import Welcome from '@/Jetstream/Welcome.vue';
 export default {
     data() {
         return {
-            file: '',
+            file: null,
             success: ''
         };
     },
@@ -59,6 +59,7 @@ export default {
                 })
                 .catch(function (error) {
                     currentObj.output = error;
+                    console.log(error);
                 });
         }
     }

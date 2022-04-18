@@ -18,15 +18,20 @@ class ProductController extends Controller
      */
     public function import(Request $request)
     {
-        $request->file->move(storage_path('app'), 'products.csv');
+        $validated = $request->validate([
+            'file' => 'required|mimes:csv,txt',
+        ]);
+        $validated['file']->move(storage_path('app'), 'products.csv');
         try {
             Artisan::call('import:csv');
         } catch (\Exception $exception) {
             return response()->json([
+                'error' => 'Произошла ошибка',
                 'message' => $exception->getMessage(),
             ], 500);
         }
         return response()->json([
+            'success' => 'Товары успешно импортированы',
             'message' => 'Products import executed',
         ], 200);
     }
