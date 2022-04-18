@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use Inertia\Inertia;
 
 class ProductController extends Controller
 {
@@ -37,7 +38,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $entities = Product::all();
+        return Inertia::render('Products', [
+            'entities' => $entities,
+        ]);
     }
 
     /**
